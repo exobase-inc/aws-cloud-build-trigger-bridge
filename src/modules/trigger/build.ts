@@ -12,7 +12,6 @@ const config = {
 }
 
 type Args = {
-  command: string
   args: any
 }
 
@@ -27,15 +26,7 @@ async function triggerBuild({ args }: Props<Args>) {
       value: Buffer.from(
         JSON.stringify(args.args)
       ).toString('base64')
-    }],
-    buildspecOverride: `
-version: 0.2
-phases:
-  build:
-    commands:
-      - ${args.command}
-
-`
+    }]
   })
   await client.send(command)
 }
@@ -44,7 +35,6 @@ export default _.compose(
   useLambda(),
   useApiKeyAuthentication(config.apiKey),
   useJsonArgs<Args>(yup => ({
-    command: yup.string().required(),
     args: yup.mixed().default({})
   })),
   triggerBuild
