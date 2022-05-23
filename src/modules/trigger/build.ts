@@ -5,7 +5,6 @@ import { useApiKeyAuthentication } from '@exobase/auth'
 import { useJsonArgs } from '@exobase/hooks'
 import { CodeBuildClient, StartBuildCommand } from '@aws-sdk/client-codebuild'
 
-
 const config = {
   projectName: process.env['AWS_CODE_BUILD_PROJECT_NAME'],
   apiKey: process.env['BRIDGE_API_KEY']

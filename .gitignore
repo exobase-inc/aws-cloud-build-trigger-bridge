@@ -18,7 +18,12 @@ env.sh
 **/.next/
 **/out/
 **/dist
-**/build
+.manifest.json
+
+# In a bridge API we commit the builds
+# so packs don't have to run it and versions
+# of a bridge are more deterministic
+# **/build
 
 # misc
 **/.DS_Store
